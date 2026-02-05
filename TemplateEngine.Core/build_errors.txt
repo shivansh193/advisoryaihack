@@ -1,0 +1,25 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\Development\advisoryai\TemplateEngine.Core\DocumentIngestor.cs(23,41): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8604: Possible null reference argument for parameter 'body' in 'string SchemaGenerator.GenerateSchemaJson(Body body)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(41,25): error CS0246: The type or namespace name 'Alias' could not be found (are you missing a using directive or an assembly reference?) [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(41,43): error CS0246: The type or namespace name 'Alias' could not be found (are you missing a using directive or an assembly reference?) [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(103,34): error CS0246: The type or namespace name 'Alias' could not be found (are you missing a using directive or an assembly reference?) [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(115,26): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+
+Build FAILED.
+
+C:\Development\advisoryai\TemplateEngine.Core\DocumentIngestor.cs(23,41): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8604: Possible null reference argument for parameter 'body' in 'string SchemaGenerator.GenerateSchemaJson(Body body)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(115,26): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(41,25): error CS0246: The type or namespace name 'Alias' could not be found (are you missing a using directive or an assembly reference?) [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(41,43): error CS0246: The type or namespace name 'Alias' could not be found (are you missing a using directive or an assembly reference?) [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(103,34): error CS0246: The type or namespace name 'Alias' could not be found (are you missing a using directive or an assembly reference?) [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+    5 Warning(s)
+    3 Error(s)
+
+Time Elapsed 00:00:01.17

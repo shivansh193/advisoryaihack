@@ -1,0 +1,31 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\Development\advisoryai\TemplateEngine.Core\DocumentIngestor.cs(23,41): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(21,51): warning CS8604: Possible null reference argument for parameter 'key' in 'bool Dictionary<string, string>.TryGetValue(string key, out string value)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(21,64): warning CS8600: Converting null literal or possible null value to non-nullable type. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(67,1): error CS0103: The name 'ms2' does not exist in the current context [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8604: Possible null reference argument for parameter 'body' in 'string SchemaGenerator.GenerateSchemaJson(Body body)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(115,26): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(72,73): warning CS8604: Possible null reference argument for parameter 'key' in 'bool Dictionary<string, string>.ContainsKey(string key)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(99,57): warning CS8604: Possible null reference argument for parameter 'key' in 'bool Dictionary<string, string>.TryGetValue(string key, out string value)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(99,70): warning CS8600: Converting null literal or possible null value to non-nullable type. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+
+Build FAILED.
+
+C:\Development\advisoryai\TemplateEngine.Core\DocumentIngestor.cs(23,41): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(21,51): warning CS8604: Possible null reference argument for parameter 'key' in 'bool Dictionary<string, string>.TryGetValue(string key, out string value)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(21,64): warning CS8600: Converting null literal or possible null value to non-nullable type. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(22,57): warning CS8604: Possible null reference argument for parameter 'body' in 'string SchemaGenerator.GenerateSchemaJson(Body body)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\TaggingService.cs(115,26): warning CS8602: Dereference of a possibly null reference. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(72,73): warning CS8604: Possible null reference argument for parameter 'key' in 'bool Dictionary<string, string>.ContainsKey(string key)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(99,57): warning CS8604: Possible null reference argument for parameter 'key' in 'bool Dictionary<string, string>.TryGetValue(string key, out string value)'. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Services\ContentInjector.cs(99,70): warning CS8600: Converting null literal or possible null value to non-nullable type. [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+C:\Development\advisoryai\TemplateEngine.Core\Program.cs(67,1): error CS0103: The name 'ms2' does not exist in the current context [C:\Development\advisoryai\TemplateEngine.Core\TemplateEngine.Core.csproj]
+    10 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.02
