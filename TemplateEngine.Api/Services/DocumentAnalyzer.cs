@@ -71,7 +71,7 @@ public class DocumentAnalyzer
             // Detect highlights and assign labels
             var highlightMapping = tagger.DetectHighlights(body);
             
-            int counter = 1;
+            int counter = 0;  // Start from 0 to match detection labels
             foreach (var kvp in highlightMapping)
             {
                 var label = $"AI_GEN_CONTENT_{counter}";
