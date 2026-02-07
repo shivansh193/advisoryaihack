@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TemplateEngine.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae927f7784be6b733a9cfd11828b4c1a4b69656d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+625e2362cac40bd41cdbcb865766c53bb91558b7")]
 [assembly: System.Reflection.AssemblyProductAttribute("TemplateEngine.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TemplateEngine.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
