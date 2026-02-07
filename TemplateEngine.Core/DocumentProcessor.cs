@@ -130,7 +130,53 @@ public class DocumentProcessor
         
         return ms.ToArray();
     }
+
+    /// <summary>
+    /// Process document with custom values (skips AI generation)
+    /// </summary>
+    public async Task<byte[]> ProcessDocumentWithValuesAsync(byte[] inputDocumentBytes, Dictionary<string, string> customValues)
+    {
+        MemoryStream ms;
+        
+        try 
+        {
+            var tempStream = new MemoryStream(inputDocumentBytes);
+            
+            using (var doc = DocumentIngestor.SafeOpenFromStream(tempStream, out ms))
+            {
+                // Phase 1: Parse and Normalize
+                DocumentIngestor.ParseDocument(doc);
+                
+                // Phase 2: Tagging (needed for injection to work)
+                var jsonSchema = SchemaGenerator.GenerateSchemaJson(doc.MainDocumentPart.Document.Body);
+                var orchestrator = new AiOrchestrator();
+                var mapping = await orchestrator.AnalyzeStructureAsync(jsonSchema);
+                
+                var tagger = new TaggingService();
+                tagger.TagDocumentRefined(doc.MainDocumentPart.Document.Body, mapping);
+                
+                // Also tag highlights
+                var highlightMapping = tagger.DetectHighlights(doc.MainDocumentPart.Document.Body);
+                
+                // Phase 3: Inject custom values
+                var injector = new ContentInjector();
+                injector.InjectValues(doc.MainDocumentPart.Document.Body, customValues);
+                
+                // Phase 4: Validation
+                var validator = new ValidatorService();
+                validator.ValidateDocument(doc);
+                doc.Save();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new DocumentProcessingException("Error processing document: " + ex.Message, ex);
+        }
+        
+        return ms.ToArray();
+    }
 }
+
 
 public class DocumentProcessingException : Exception
 {

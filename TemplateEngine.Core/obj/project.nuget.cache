@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "v2SnGhzmu+E=",
+  "dgSpecHash": "Udc4w02S/0g=",
   "success": true,
   "projectFilePath": "C:\\Development\\advisoryai\\TemplateEngine.Core\\TemplateEngine.Core.csproj",
   "expectedPackageFiles": [
@@ -14,7 +14,7 @@
     "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.ai.abstractions\\10.2.0\\microsoft.extensions.ai.abstractions.10.2.0.nupkg.sha512",
     "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.ai.openai\\10.0.1-preview.1.25571.5\\microsoft.extensions.ai.openai.10.0.1-preview.1.25571.5.nupkg.sha512",
     "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.2\\microsoft.extensions.caching.abstractions.10.0.2.nupkg.sha512",
-    "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.2\\microsoft.extensions.configuration.abstractions.10.0.2.nupkg.sha512",
+    "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0\\microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.2\\microsoft.extensions.dependencyinjection.10.0.2.nupkg.sha512",
     "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.2\\microsoft.extensions.dependencyinjection.abstractions.10.0.2.nupkg.sha512",
     "C:\\Users\\Shivansh Kalra\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.2\\microsoft.extensions.logging.abstractions.10.0.2.nupkg.sha512",

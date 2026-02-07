@@ -1,37 +1,54 @@
 import { useState } from 'react';
 import DocumentUploader from './components/DocumentUploader';
-import ProcessingStatus from './components/ProcessingStatus';
+import PlaceholderEditor from './components/PlaceholderEditor';
 import { api } from './services/api';
 import './App.css';
 
 function App() {
-  const [currentJobs, setCurrentJobs] = useState([]);
-  const [completedJobs, setCompletedJobs] = useState([]);
-  const [isUploading, setIsUploading] = useState(false);
+  const [analyzeResult, setAnalyzeResult] = useState(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const handleUpload = async (files) => {
-    setIsUploading(true);
-    try {
-      let response;
+    if (files.length === 0) return;
 
-      if (files.length === 1) {
-        response = await api.uploadDocument(files[0]);
-        setCurrentJobs([response]);
-      } else {
-        response = await api.uploadBatch(files);
-        setCurrentJobs(response.jobs);
-      }
+    setIsAnalyzing(true);
+    try {
+      // Only process first file for now
+      const result = await api.analyzeDocument(files[0]);
+      setAnalyzeResult(result);
     } catch (error) {
-      console.error('Upload error:', error);
-      alert('Failed to upload documents. Make sure the API is running.');
+      console.error('Analyze error:', error);
+      alert('Failed to analyze document. Make sure the API is running.');
     } finally {
-      setIsUploading(false);
+      setIsAnalyzing(false);
     }
   };
 
-  const handleProcessingComplete = (jobs) => {
-    setCompletedJobs(prev => [...prev, ...jobs]);
-    setCurrentJobs([]);
+  const handleProcess = async (jobId, mode, values, geminiApiKey) => {
+    try {
+      const blob = await api.processDocument(jobId, mode, values, geminiApiKey);
+
+      // Download processed file
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Processed_${analyzeResult.fileName}`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+
+      // Reset for next upload
+      setAnalyzeResult(null);
+      alert('✅ Document processed and downloaded successfully!');
+    } catch (error) {
+      console.error('Process error:', error);
+      alert('Failed to process document: ' + (error.response?.data?.error || error.message));
+    }
+  };
+
+  const handleReset = () => {
+    setAnalyzeResult(null);
   };
 
   return (
@@ -44,48 +61,30 @@ function App() {
             Document Processing Engine
           </h1>
           <p className="subtitle">
-            AI-powered template intelligence for Word documents
+            Two-Phase AI-powered document processing
           </p>
         </header>
 
         <main className="main">
-          {isUploading ? (
+          {isAnalyzing ? (
             <div className="loading">
               <div className="spinner" />
-              <p>Uploading documents...</p>
+              <p>Analyzing document...</p>
             </div>
+          ) : analyzeResult ? (
+            <>
+              <PlaceholderEditor
+                jobId={analyzeResult.jobId}
+                fileName={analyzeResult.fileName}
+                placeholders={analyzeResult.detectedPlaceholders}
+                onProcess={handleProcess}
+              />
+              <button className="reset-btn" onClick={handleReset}>
+                ← Upload Another Document
+              </button>
+            </>
           ) : (
             <DocumentUploader onUpload={handleUpload} />
-          )}
-
-          {currentJobs.length > 0 && (
-            <ProcessingStatus
-              jobs={currentJobs}
-              onComplete={handleProcessingComplete}
-            />
-          )}
-
-          {completedJobs.length > 0 && (
-            <div className="completed-section">
-              <h3>Recently Completed</h3>
-              <div className="completed-list">
-                {completedJobs.map((job) => (
-                  <div key={job.jobId} className="completed-card">
-                    <div className="completed-header">
-                      <span className="completed-icon">✓</span>
-                      <span className="completed-filename">{job.fileName}</span>
-                    </div>
-                    <a
-                      href={api.getDownloadUrl(job.jobId)}
-                      download
-                      className="download-btn"
-                    >
-                      Download
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
           )}
         </main>
 
