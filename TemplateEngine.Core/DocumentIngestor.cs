@@ -32,6 +32,28 @@ public static class DocumentIngestor
         return WordprocessingDocument.Open(ms, true);
     }
 
+    public static WordprocessingDocument SafeOpenFromStream(Stream inputStream, out MemoryStream ms)
+    {
+        ms = new MemoryStream();
+        inputStream.CopyTo(ms);
+        ms.Position = 0;
+
+        using (WordprocessingDocument doc = WordprocessingDocument.Open(ms, true))
+        {
+            SanitizeGoogleDocsXml(doc);
+
+            if (doc.MainDocumentPart?.Document?.Body != null)
+            {
+                MergeRuns(doc.MainDocumentPart.Document.Body);
+            }
+            doc.Save();
+        }
+        
+        ms.Position = 0;
+        return WordprocessingDocument.Open(ms, true);
+    }
+
+
     public static void ParseDocument(WordprocessingDocument doc)
     {
         var body = doc.MainDocumentPart?.Document.Body;

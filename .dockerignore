@@ -1,0 +1,12 @@
+**/.dockerignore
+**/.env
+**/bin
+**/obj
+**/publish
+.git
+.vs
+.vscode
+**/node_modules
+frontend/
+Input/
+Output/
