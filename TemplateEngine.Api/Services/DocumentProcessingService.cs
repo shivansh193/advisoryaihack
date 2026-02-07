@@ -7,6 +7,7 @@ namespace TemplateEngine.Api.Services;
 public class DocumentProcessingService
 {
     private readonly ConcurrentDictionary<string, ProcessingJob> _jobs = new();
+    private readonly GeminiService _geminiService = new();
     private readonly DocumentProcessor _processor = new();
     private readonly string _outputDirectory;
 
@@ -20,29 +21,39 @@ public class DocumentProcessingService
         }
     }
 
-    public async Task<ProcessingJob> ProcessDocumentAsync(IFormFile file)
+    public async Task<ProcessingJob> ProcessDocumentAsync(
+        IFormFile file,
+        ProcessingMode mode = ProcessingMode.Auto,
+        string? customJson = null,
+        string? geminiApiKey = null)
     {
         var job = new ProcessingJob
         {
             FileName = file.FileName,
-            Status = JobStatus.Pending
+            Status = JobStatus.Pending,
+            Mode = mode,
+            CustomJson = customJson
         };
 
         _jobs[job.JobId] = job;
 
         // Process in background
-        _ = Task.Run(async () => await ProcessJobAsync(job, file));
+        _ = Task.Run(async () => await ProcessJobAsync(job, file, geminiApiKey));
 
         return job;
     }
 
-    public async Task<List<ProcessingJob>> ProcessBatchAsync(IFormFileCollection files)
+    public async Task<List<ProcessingJob>> ProcessBatchAsync(
+        IFormFileCollection files,
+        ProcessingMode mode = ProcessingMode.Auto,
+        string? customJson = null,
+        string? geminiApiKey = null)
     {
         var jobs = new List<ProcessingJob>();
 
         foreach (var file in files)
         {
-            var job = await ProcessDocumentAsync(file);
+            var job = await ProcessDocumentAsync(file, mode, customJson, geminiApiKey);
             jobs.Add(job);
         }
 
@@ -66,7 +77,7 @@ public class DocumentProcessingService
         return File.ReadAllBytes(job.OutputPath);
     }
 
-    private async Task ProcessJobAsync(ProcessingJob job, IFormFile file)
+    private async Task ProcessJobAsync(ProcessingJob job, IFormFile file, string? geminiApiKey)
     {
         try
         {
@@ -79,8 +90,39 @@ public class DocumentProcessingService
                 inputBytes = ms.ToArray();
             }
 
-            // Process the document
-            var outputBytes = await _processor.ProcessDocumentAsync(inputBytes);
+            byte[] outputBytes;
+
+            // Route based on processing mode
+            switch (job.Mode)
+            {
+                case ProcessingMode.Auto:
+                    // Current automatic processing
+                    outputBytes = await _processor.ProcessDocumentAsync(inputBytes);
+                    break;
+
+                case ProcessingMode.Manual:
+                    // User-provided JSON values
+                    if (string.IsNullOrEmpty(job.CustomJson))
+                    {
+                        throw new Exception("Custom JSON is required for Manual mode");
+                    }
+                    var customValues = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(job.CustomJson);
+                    outputBytes = await _processor.ProcessDocumentWithValuesAsync(inputBytes, customValues ?? new());
+                    break;
+
+                case ProcessingMode.AIGenerated:
+                    // Gemini AI generates values
+                    if (string.IsNullOrEmpty(geminiApiKey))
+                    {
+                        throw new Exception("Gemini API key is required for AIGenerated mode");
+                    }
+                    // This endpoint is deprecated for AI mode - use /analyze and /process instead
+                    throw new Exception("AIGenerated mode requires using /analyze and /process endpoints");
+                    break;
+
+                default:
+                    throw new Exception($"Unknown processing mode: {job.Mode}");
+            }
 
             // Save to output directory
             var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");

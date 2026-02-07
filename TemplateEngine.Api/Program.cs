@@ -19,6 +19,8 @@ builder.Services.AddCors(options =>
 
 // Register document processing service as singleton
 builder.Services.AddSingleton<DocumentProcessingService>();
+builder.Services.AddSingleton<DocumentAnalyzer>();
+builder.Services.AddSingleton<GeminiService>();
 
 // Configure file upload size limits
 builder.Services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(options =>

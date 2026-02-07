@@ -5,6 +5,8 @@ public class ProcessingJob
     public string JobId { get; set; } = Guid.NewGuid().ToString();
     public string FileName { get; set; } = string.Empty;
     public JobStatus Status { get; set; } = JobStatus.Pending;
+    public ProcessingMode Mode { get; set; } = ProcessingMode.Auto;
+    public string? CustomJson { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? CompletedAt { get; set; }
     public string? ErrorMessage { get; set; }
